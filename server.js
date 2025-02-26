@@ -4,6 +4,8 @@ const mongoose = require('mongoose')
 
 require('dotenv').config()
 
+const port = process.env.PORT || 4000
+
 // Local imports
 const taskRoutes = require('./routes/tasks')
 
@@ -20,8 +22,8 @@ app.use((req, res, next) => {
 // Routes
 app.use('/tasks', taskRoutes)
 
-app.listen(process.env.PORT, () => {
-    console.log(`Listening on Port ${process.env.PORT}`)
+app.listen(port, () => {
+    console.log(`Listening on Port ${port}`)
     mongoose.connect(process.env.MONGO_URI)
         .then(() => {
             console.log('Connected to the database')
